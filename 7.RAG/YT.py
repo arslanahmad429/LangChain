@@ -15,4 +15,4 @@ try:
 except TranscriptsDisabled:
     print("No captions Available for this video")
     retriever = vector_stores.as_retriever(search_type="similarity",search_kwargs = { "k": 4 })
-    retriever.invoke(" WHat is this ebay") 
+    retriever.invoke(" What is this ebay") 

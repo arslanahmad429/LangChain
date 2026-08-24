@@ -1,5 +1,5 @@
 import streamlit as st
-from langraph_backend import chatbot
+from langraph_backend import chatbot ,  retrieve_all_threads
 from langchain_core.messages import HumanMessage, AIMessage
 import uuid
 
@@ -16,7 +16,7 @@ def reset_chat():
 # '''''''''''''''''''''''''''''''Add thread'''''''''''''''''''''''''''''''
 def add_thread(thread_id):
     if 'chat_threads' not in st.session_state:
-        st.session_state['chat_threads'] = []
+        st.session_state['chat_threads'] = retrieve_all_threads()
     if thread_id not in st.session_state['chat_threads']:
         st.session_state['chat_threads'].append(thread_id)
 
@@ -45,7 +45,7 @@ if 'thread_id' not in st.session_state:
     st.session_state['thread_id'] = generate_thread_id()
 
 if 'chat_threads' not in st.session_state:
-    st.session_state['chat_threads'] = []
+    st.session_state['chat_threads'] = retrieve_all_threads()
 
 add_thread(st.session_state['thread_id'])    
 
